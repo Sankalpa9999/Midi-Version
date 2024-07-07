@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<div class="responsive-container-block bigContainer">
+    <h1 class="about-heading">About Us</h1>
+    <div class="responsive-container-block Container">
+        <img class="mainImg" src="{% static 'img/fitstory.jpg' %}">
+        <div class="allText aboveText">
+            <p class="text-blk headingText">Our Story</p>
+            <p class="text-blk subHeadingText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="text-blk description">
+                FitJourney started with a passion for helping people achieve their fitness goals. We saw the need for
+                personalized, supportive fitness guidance and created a platform to make fitness enjoyable and
+                accessible for everyone.
+            </p>
+            <button class="explore">Explore</button>
+        </div>
+    </div>
+    <div class="responsive-container-block Container bottomContainer">
+        <img class="mainImg" src="{% static 'img/fitvision.jpg' %}">
+        <div class="allText bottomText">
+            <p class="text-blk headingText">Our Vision</p>
+            <p class="text-blk subHeadingText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="text-blk description">
+                To be the go-to platform for personalized fitness and wellness, helping people everywhere reach their
+                health goals.
+            </p>
+            <button class="explore">Explore</button>
+        </div>
+    </div>
+    <div class="responsive-container-block Container">
+        <img class="mainImg" src="{% static 'img/fitmission.jpg' %}">
+        <div class="allText aboveText">
+            <p class="text-blk headingText">Our Mission</p>
+            <p class="text-blk subHeadingText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="text-blk description">
+                To offer customized fitness plans, expert support, and a supportive community, making it easy for
+                everyone to achieve a healthy and happy lifestyle.
+            </p>
+            <button class="explore">Explore</button>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/min.js' %}"></script>
+<script src="{% static 'js/afterlogin.js' %}"></script>
+
+{% endblock %}

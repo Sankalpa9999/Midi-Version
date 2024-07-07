@@ -1,0 +1,36 @@
+<!-- exercise_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise Library</title>
+    <style>
+        .pushup img {
+            width: 10%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exercise Library</h1>
+
+    <a href="{% url 'exercise_create' %}">Add New Exercise</a>
+
+    <div>
+        {% for exercise in exercises %}
+        <div class="pushup">
+            {% if exercise.thumbnail %}
+                 <!-- Debug statement -->
+                <img src="{{ exercise.thumbnail.url }}" alt="{{ exercise.name }}">
+            {% else %}
+                <img src="/static/img/fitjourney-logo.png" alt="No thumbnail available">
+            {% endif %}
+            <h2>{{ exercise.name }}</h2>
+            <p>Muscle Group: {{ exercise.muscle_group }}</p>
+            <p>Equipment: {{ exercise.equipment }}</p>
+            <p>Difficulty: {{ exercise.difficulty }}</p>
+            <a href="{% url 'exercise_detail' exercise.pk %}">View Details</a>
+            <a href="{% url 'exercise_update' exercise.pk %}">Edit</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

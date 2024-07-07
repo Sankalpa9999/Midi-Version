@@ -1,0 +1,82 @@
+/* General styles */
+.membership-cards {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap; /* Ensure cards wrap to next line on smaller screens */
+}
+
+.membership-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    width: calc(30% - 20px); /* Adjust width with gap */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Align items evenly */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.membership-card:hover {
+    transform: translateY(-5px); /* Move card up on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a slight shadow */
+}
+
+.membership-card h2 {
+    font-size: 1.6rem; /* Decrease font size */
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.membership-card .price {
+    font-size: 1.2rem; /* Decrease font size */
+    color: #666;
+}
+
+.membership-card ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    margin-top: 15px;
+}
+
+.membership-card ul li {
+    font-size: 1rem; /* Decrease font size */
+    margin-bottom: 8px;
+    color: #333; /* Set text color to black */
+}
+
+.membership-card a.btn {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none; /* Remove underline */
+    padding: 10px 20px;
+    border-radius: 5px;
+    align-self: center; /* Align button to center horizontally */
+    margin-top: auto; /* Push button to the bottom */
+    transition: background-color 0.3s ease;
+}
+
+.membership-card a.btn:hover {
+    background-color: #45a049;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .membership-cards {
+        justify-content: center; /* Center cards on medium screens */
+    }
+    .membership-card {
+        width: calc(45% - 20px); /* Adjust width for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .membership-card {
+        width: calc(100% - 20px); /* Full width on small screens */
+    }
+}

@@ -1,0 +1,67 @@
+<!-- templates/Goal/goal_history.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+<style>
+
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #4e4d4d;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        border-radius: 8px;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    table th, table td {
+        border: 1px solid #000000;
+        padding: 20px;
+        text-align: left;
+    }
+    table th {
+        background-color: #71a1b4;
+    }
+    table tr:nth-child(even) {
+        background-color: #eec7c7;
+    }
+    table tr:hover {
+        background-color: #3d8154;
+    }
+    .actions a {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+    }
+</style>
+
+<div class="container">
+    <h1>My Goal History</h1>
+    <table>
+        <tr>
+            <th>Goal Type</th>
+            <th>Target Value</th>
+            <th>End Date</th>
+            <th>Achieved</th>
+            <th>Actions</th>
+        </tr>
+        {% for goal in goals %}
+        <tr>
+            <td>{{ goal.get_goal_type_display }}</td>
+            <td>{{ goal.target_value }}</td>
+            <td>{{ goal.end_date }}</td>
+            <td>{% if goal.achieved %} Yes {% else %} No {% endif %}</td>
+            <td class="actions"><a href="{% url 'track_progress' goal.id %}">View Progress</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+

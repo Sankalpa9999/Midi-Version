@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ exercise.name }}</title>
+</head>
+<body>
+    <h1>{{ exercise.name }}</h1>
+    <img src="{{ exercise.thumbnail.url }}" alt="{{ exercise.name }}">
+    <p>Muscle Group: {{ exercise.muscle_group }}</p>
+    <p>Equipment: {{ exercise.equipment }}</p>
+    <p>Difficulty: {{ exercise.difficulty }}</p>
+    <p>Description: {{ exercise.description }}</p>
+    <p>Steps:</p>
+    <p>{{ exercise.steps }}</p>
+    {% if exercise.video_url %}
+    <p>Video: <a href="{{ exercise.video_url }}">Watch here</a></p>
+    {% endif %}
+    <a href="{% url 'exercise_update' exercise.pk %}">Edit</a>
+    <a href="{% url 'exercise_list' %}">Back to Exercise List</a>
+</body>
+</html>
