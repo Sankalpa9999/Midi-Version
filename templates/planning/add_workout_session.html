@@ -1,0 +1,15 @@
+<!-- planning/templates/planning/add_workout_session.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Add Workout Session to {{ workout_plan.name }}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Session</button>
+</form>
+
+<a href="{% url 'workout_planner' %}">Back to Workout Planner</a>
+{% endblock %}

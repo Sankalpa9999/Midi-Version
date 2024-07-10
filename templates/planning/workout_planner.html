@@ -1,0 +1,77 @@
+<!-- planning/templates/planning/workout_planner.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Workout Planner</h1>
+
+<h2>Calendar View</h2>
+<div id="calendar"></div>
+
+<h2>Your Workout Plans</h2>
+<ul>
+    {% for plan in workout_plans %}
+    <li>{{ plan.exercise }} - <a href="{% url 'add_workout_session' plan.id %}">Add Session</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'create_workout_plan' %}">Create New Workout Plan</a>
+
+<h2>Scheduled Workouts</h2>
+<ul>
+    {% for scheduled in scheduled_workouts %}
+    <li>{{ scheduled.workout_plan.exercise.name }} on {{ scheduled.date }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'schedule_workout' %}">Schedule New Workout</a>
+
+<!-- FullCalendar CSS -->
+<style>
+    #calendar {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+</style>
+
+<!-- FullCalendar JS and initialization -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            events: [
+                // Render workouts
+                {% for workout in workouts %}
+                {
+                    title: '{{ workout.exercise.name }}',
+                    start: '{{ workout.date }}',
+                    description: 'Duration: {{ workout.duration }}',
+                    color: '#3a87ad'  // Optional: Customize event color
+                },
+                {% endfor %}
+                // Render scheduled workouts initially
+                {% for scheduled in scheduled_workouts %}
+                {
+                    title: '{{ scheduled.workout_plan.exercise.name }}',
+                    start: '{{ scheduled.date }}',
+                    description: 'Scheduled Workout',
+                    color: '#f0ad4e'  // Optional: Customize event color
+                },
+                {% endfor %}
+            ],
+            eventDidMount: function(info) {
+                var tooltip = new Tooltip(info.el, {
+                    title: info.event.extendedProps.description,
+                    placement: 'top',
+                    trigger: 'hover',
+                    container: 'body'
+                });
+            }
+        });
+        calendar.render();
+    });
+</script>
+
+{% endblock %}

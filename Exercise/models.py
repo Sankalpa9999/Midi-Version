@@ -1,7 +1,6 @@
 from django.db import models
 
 class Exercise(models.Model):
-    
     EXERCISE_CHOICES = [
         ('Squat', 'Squat'),
         ('Bicep Curl', 'Bicep Curl'),

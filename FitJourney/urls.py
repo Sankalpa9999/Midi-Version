@@ -26,6 +26,8 @@ urlpatterns = [
     path('dashboard/', include('Dashboard.urls')),   
     path('goal/', include('Goal.urls')),   
     path('exercise/', include('Exercise.urls')),
+    path('planning/', include('planning.urls')),
+    path('progress/', include('Progress.urls')),
 ]
 
 if settings.DEBUG:

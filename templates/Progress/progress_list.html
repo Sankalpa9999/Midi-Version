@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Progress List</title>
+</head>
+<body>
+    <h1>Progress List</h1>
+    <a href="{% url 'add_progress' %}">Add Progress</a>
+    <ul>
+        {% for progress in progresses %}
+            <li>{{ progress.date }} - Weight: {{ progress.weight }} - Performance: {{ progress.performance }} - Workout Frequency: {{ progress.workout_frequency }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'progress_charts' %}">View Charts</a>
+</body>
+</html>

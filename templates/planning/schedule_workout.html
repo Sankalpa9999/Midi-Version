@@ -1,0 +1,15 @@
+<!-- planning/templates/planning/schedule_workout.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Schedule Workout</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Schedule</button>
+</form>
+
+<a href="{% url 'workout_planner' %}">Back to Workout Planner</a>
+{% endblock %}

@@ -34,13 +34,13 @@
         <img src="{%static 'img/monitor.jpg'%}" alt="App Development">
         <h3>Workout Planning</h3>
         <p>Schedule workouts on a calendar and customize routines.</p>
-        <a href="#" class="btn">Proceed</a>
+        <a href="{% url 'workout_planner' %}" class="btn">Proceed</a>
       </div>
       <div class="card">
         <img src="{%static 'img/monitor.jpg'%}" alt="Accounting">
         <h3>Progress Tracking</h3>
         <p>Monitor progress with visual metrics and ensure workout consistency.</p>
-        <a href="#" class="btn">Proceed</a>
+        <a href="{% url 'progress_list' %}" class="btn">Proceed</a>
       </div>
     </div>
   </div>
