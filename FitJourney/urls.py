@@ -28,6 +28,8 @@ urlpatterns = [
     path('exercise/', include('Exercise.urls')),
     path('planning/', include('planning.urls')),
     path('progress/', include('Progress.urls')),
+
+    path('social/', include('SocialSharing.urls'))
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Share Content</title>
+</head>
+<body>
+    <h1>Share Your Achievement, Photo, or Routine</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Share</button>
+    </form>
+</body>
+</html>

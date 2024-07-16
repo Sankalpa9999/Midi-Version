@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shared Content</title>
+</head>
+<body>
+    <h1>Shared Content</h1>
+    <div>
+        {% for content in shared_contents %}
+            <div>
+                <h2>{{ content.title }}</h2>
+                <p>{{ content.content }}</p>
+                {% if content.image %}
+                    <img src="{{ content.image.url }}" alt="Image">
+                {% endif %}
+                <p>Shared by: {{ content.user.username }}</p>
+                <button onclick="shareOnSocialMedia('{{ content.id }}')">Share on Social Media</button>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+<script>
+    function shareOnSocialMedia(contentId) {
+        const url = window.location.href + 'shared_content/' + contentId;
+        const text = "Check out this amazing achievement!";
+        const shareData = {
+            title: 'Shared Content',
+            text: text,
+            url: url
+        };
+        navigator.share(shareData).then(() => {
+            console.log('Content shared successfully');
+        }).catch((error) => {
+            console.error('Error sharing content:', error);
+        });
+    }
+</script>
+</html>
